@@ -1,6 +1,6 @@
 import type { Dictionary } from "@/content/types";
 import { site } from "@/config/site";
-import { brands, brandLogoSrc } from "@/data/brands";
+import { visibleBrands, brandLogoSrc } from "@/data/brands";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { LogoCarousel } from "@/components/company/LogoCarousel";
@@ -15,9 +15,10 @@ interface BrandsProps {
  * there is real brand data. No fictitious suppliers or logos.
  */
 export function Brands({ dict }: BrandsProps) {
-  if (!site.flags.showBrands || brands.length === 0) return null;
+  const roster = visibleBrands();
+  if (!site.flags.showBrands || roster.length === 0) return null;
 
-  const items = brands.map((brand) => ({
+  const items = roster.map((brand) => ({
     name: brand.name,
     src: brandLogoSrc(brand.logo),
     url: brand.url,

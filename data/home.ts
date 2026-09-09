@@ -13,8 +13,11 @@ export interface HeroConfig {
 }
 
 export const heroConfig: HeroConfig = {
-  image: "",
-  imagePosition: "center",
+  image: "hero-logo-industrial.png",
+  // The CCS logo sits left-of-centre in the frame; "left center" keeps the
+  // whole logo visible when object-cover crops the tall left hero column.
+  // Change to "center" once a centred crop is confirmed to keep the logo.
+  imagePosition: "left center",
 };
 
 /** Resolves the hero image slot to a public path, or "" when none is set. */

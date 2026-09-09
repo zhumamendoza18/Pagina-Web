@@ -107,7 +107,81 @@ export interface Dictionary {
       specialized: string;
       repair: string;
       maintenance: string;
+      resinous: string;
+      jointSealing: string;
+      marking: string;
+      mortars: string;
     };
+  };
+
+  /**
+   * "Solutions for demanding environments" — compact, image-first band on the
+   * Home. Four tiles only (ESD / high traffic / chemical / self-leveling).
+   */
+  demanding: {
+    kicker: string;
+    title: string;
+    /** Link to the technical solutions index. */
+    cta: string;
+    imagePlaceholder: string;
+    items: {
+      esd: string;
+      highTraffic: string;
+      chemical: string;
+      selfLeveling: string;
+    };
+  };
+
+  /** /soluciones — /solutions index page (one interactive section per family). */
+  solutionsPage: {
+    metaTitle: string;
+    metaDescription: string;
+    kicker: string;
+    title: string;
+    /** One short lead sentence. No long technical articles in this phase. */
+    intro: string;
+    /** Label above the subtopic chips of each family. */
+    includesLabel: string;
+    imagePlaceholder: string;
+    /** Action over the album cover. */
+    viewProcess: string;
+    /** Section sub-headings for the selected subtopic. */
+    whatIsIt: string;
+    benefitsLabel: string;
+    idealForLabel: string;
+    /** Neutral text shown while a subtopic has no approved summary. */
+    summaryPending: string;
+    /** Accessible label for the subtopic button group. */
+    topicsGroupLabel: string;
+    /** Lightbox / album strings. */
+    gallery: {
+      label: string;
+      close: string;
+      prev: string;
+      next: string;
+    };
+  };
+
+  /** /nosotros — /about page. */
+  aboutPage: {
+    metaTitle: string;
+    metaDescription: string;
+    kicker: string;
+    title: string;
+    /** Short lead paragraph. */
+    intro: string;
+    /** Three short blocks — no verbatim copy of the corporate document. */
+    blocks: {
+      origin: { title: string; body: string };
+      experience: { title: string; body: string };
+      support: { title: string; body: string };
+    };
+    /** Prefix + year line, e.g. "Desde 2009". */
+    sinceLabel: string;
+    ethosKicker: string;
+    ethosTitle: string;
+    imageAlt: string;
+    imagePlaceholder: string;
   };
 
   /** "Industries we serve" section — four full-photo cards. */
@@ -168,6 +242,10 @@ export interface Dictionary {
     title: string;
     /** Card button. */
     learnMore: string;
+    /** Per-card link labels below each image in the "what guides us" section. */
+    exploreMission: string;
+    exploreVision: string;
+    exploreValues: string;
     /** Modal close button. */
     close: string;
     imagePlaceholder: string;

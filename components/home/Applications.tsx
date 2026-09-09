@@ -21,7 +21,10 @@ export function Applications({ locale, dict }: ApplicationsProps) {
   const { applications } = dict;
 
   const items = specializedApplications().map(({ category, subtopic }) => ({
-    href: getSolutionSubtopicHref(locale, category.slug, subtopic.slug),
+    // category + subtopic slugs: unique per card and identical in ES / EN,
+    // even though several cards share the same family anchor as `href`.
+    id: `${category.slug}__${subtopic.slug}`,
+    href: getSolutionSubtopicHref(locale, category.slug),
     name: subtopic.name[locale],
     imageSrc: subtopicImageSrc(subtopic),
   }));

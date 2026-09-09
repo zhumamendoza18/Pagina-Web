@@ -57,7 +57,7 @@ export const en: Dictionary = {
   story: {
     kicker: "Our story",
     title: "Experience That Builds Trust",
-    body: "Since 2009, Concrete Coatings Solutions has provided specialized solutions for concrete surfaces, helping each client identify the system best suited to their needs and budget.",
+    body: "Concrete Coatings Solutions was created with the goal of going beyond providing a service: becoming a trusted partner in solving concrete flooring challenges. Our experience serving the manufacturing industry allows us to provide specialized guidance, technical support, and solutions tailored to the needs of each project.",
     cta: "Learn More About Us",
     sinceLabel: "Since",
     highlights: [
@@ -76,13 +76,83 @@ export const en: Dictionary = {
     viewAll: "View all services",
     imagePlaceholder: "Photography coming soon",
     categories: {
-      polishing: "Concrete Polishing",
+      polishing: "Polished Concrete",
       floors: "Floor Coatings",
       waterproofing: "Waterproofing",
       specialized: "Specialized Coatings",
       repair: "Concrete Repair",
-      maintenance: "Existing System Maintenance",
+      maintenance: "Floor Maintenance & Restoration",
+      resinous: "Resinous Flooring Systems",
+      jointSealing: "Joint Sealing",
+      marking: "Industrial Floor Marking",
+      mortars: "High-Strength Mortar Systems",
     },
+  },
+
+  demanding: {
+    kicker: "Resinous systems",
+    title: "Solutions for Demanding Environments",
+    cta: "Explore Technical Solutions",
+    imagePlaceholder: "Photography coming soon",
+    items: {
+      esd: "ESD",
+      highTraffic: "High Traffic",
+      chemical: "Chemical Resistant",
+      selfLeveling: "Self Leveling",
+    },
+  },
+
+  solutionsPage: {
+    metaTitle: "Solutions",
+    metaDescription:
+      "Solution families for concrete floors and surfaces: polished concrete, coatings, resinous systems, waterproofing, joint sealing, floor marking, repair, maintenance and high-strength mortars.",
+    kicker: "Our solutions",
+    title: "Specialized systems for every surface",
+    intro:
+      "Each family groups the systems we install. We guide you toward the one that fits your operation and your budget.",
+    includesLabel: "Includes",
+    imagePlaceholder: "Photography coming soon",
+    viewProcess: "View Process",
+    whatIsIt: "What is it?",
+    benefitsLabel: "Benefits",
+    idealForLabel: "Ideal for",
+    summaryPending: "Detailed information in preparation.",
+    topicsGroupLabel: "Choose a topic",
+    gallery: {
+      label: "Photo gallery",
+      close: "Close",
+      prev: "Previous",
+      next: "Next",
+    },
+  },
+
+  aboutPage: {
+    metaTitle: "About",
+    metaDescription:
+      "Concrete Coatings Solutions: our origin, manufacturing-industry experience, and an advisory, technical-support approach to concrete floors. Since 2009.",
+    kicker: "About us",
+    title: "A Partner for Your Concrete Floors",
+    intro:
+      "Concrete Coatings Solutions was created to go beyond providing a service: to be the partner that solves concrete flooring problems.",
+    blocks: {
+      origin: {
+        title: "Our origin",
+        body: "The company grew out of more than a decade serving the manufacturing industry, with the aim of becoming a partner in solving concrete flooring problems — not just another service provider.",
+      },
+      experience: {
+        title: "Industry experience",
+        body: "Ongoing work with manufacturing plants gave us the judgment to understand each operation and recommend the right system for its needs and budget.",
+      },
+      support: {
+        title: "Guidance and support",
+        body: "We support every project with specialized guidance, technical support, and trained personnel, always aiming for service excellence.",
+      },
+    },
+    sinceLabel: "Since",
+    ethosKicker: "Mission, vision and values",
+    ethosTitle: "What Guides Us",
+    imageAlt: "The Concrete Coatings Solutions team on site",
+    imagePlaceholder: "Photography coming soon",
   },
 
   industries: {
@@ -127,6 +197,9 @@ export const en: Dictionary = {
     kicker: "Mission, vision and values",
     title: "What Guides Us",
     learnMore: "Learn more",
+    exploreMission: "Learn About Our Mission",
+    exploreVision: "Learn About Our Vision",
+    exploreValues: "Learn About Our Values",
     close: "Close",
     imagePlaceholder: "Photography coming soon",
     mission: {

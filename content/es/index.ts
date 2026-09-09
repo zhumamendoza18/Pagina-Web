@@ -57,7 +57,7 @@ export const es: Dictionary = {
   story: {
     kicker: "Nuestra historia",
     title: "Experiencia que construye confianza",
-    body: "Desde 2009, Concrete Coatings Solutions ofrece soluciones especializadas para superficies de concreto, orientando a cada cliente hacia el sistema adecuado para sus necesidades y presupuesto.",
+    body: "Concrete Coatings Solutions nace con el objetivo de ir más allá de ofrecer un servicio: convertirse en un aliado para la solución de problemas en pisos de concreto. Nuestra experiencia en la industria maquiladora nos permite brindar asesoría especializada, soporte técnico y soluciones adecuadas para las necesidades de cada proyecto.",
     cta: "Conoce más sobre nosotros",
     sinceLabel: "Desde",
     highlights: [
@@ -76,13 +76,83 @@ export const es: Dictionary = {
     viewAll: "Ver todos los servicios",
     imagePlaceholder: "Fotografía próximamente",
     categories: {
-      polishing: "Abrillantado de concreto",
+      polishing: "Pulido y Abrillantado de Concreto",
       floors: "Recubrimientos para pisos",
       waterproofing: "Impermeabilización",
       specialized: "Recubrimientos especializados",
-      repair: "Reparación de concreto",
-      maintenance: "Mantenimiento de sistemas existentes",
+      repair: "Reparación de Concreto",
+      maintenance: "Mantenimiento y Regeneración de Pisos",
+      resinous: "Sistemas Resinosos",
+      jointSealing: "Sello de Juntas",
+      marking: "Señalización Industrial",
+      mortars: "Morteros de Alta Resistencia",
     },
+  },
+
+  demanding: {
+    kicker: "Sistemas resinosos",
+    title: "Soluciones para ambientes exigentes",
+    cta: "Ver soluciones técnicas",
+    imagePlaceholder: "Fotografía próximamente",
+    items: {
+      esd: "ESD",
+      highTraffic: "Alto Tráfico",
+      chemical: "Resistencia Química",
+      selfLeveling: "Autonivelante",
+    },
+  },
+
+  solutionsPage: {
+    metaTitle: "Soluciones",
+    metaDescription:
+      "Familias de soluciones para pisos y superficies de concreto: pulido y abrillantado, recubrimientos, sistemas resinosos, impermeabilización, sello de juntas, señalización, reparación, mantenimiento y morteros de alta resistencia.",
+    kicker: "Nuestras soluciones",
+    title: "Sistemas especializados para cada superficie",
+    intro:
+      "Cada familia agrupa los sistemas que aplicamos. Te orientamos hacia el que se ajusta a tu operación y a tu presupuesto.",
+    includesLabel: "Incluye",
+    imagePlaceholder: "Fotografía próximamente",
+    viewProcess: "Ver proceso",
+    whatIsIt: "¿Qué es?",
+    benefitsLabel: "Beneficios",
+    idealForLabel: "Ideal para",
+    summaryPending: "Información detallada en preparación.",
+    topicsGroupLabel: "Elige un subtema",
+    gallery: {
+      label: "Galería de fotos",
+      close: "Cerrar",
+      prev: "Anterior",
+      next: "Siguiente",
+    },
+  },
+
+  aboutPage: {
+    metaTitle: "Nosotros",
+    metaDescription:
+      "Concrete Coatings Solutions: origen, experiencia en la industria maquiladora y un enfoque de asesoría y soporte técnico para pisos de concreto. Desde 2009.",
+    kicker: "Nosotros",
+    title: "Un aliado para tus pisos de concreto",
+    intro:
+      "Concrete Coatings Solutions nació para ir más allá de prestar un servicio: ser el aliado que resuelve problemas en pisos de concreto.",
+    blocks: {
+      origin: {
+        title: "Nuestro origen",
+        body: "La empresa surge de más de una década atendiendo a la industria maquiladora, con la intención de convertirse en un aliado para la solución de problemas en pisos de concreto y no solo en un proveedor de servicios.",
+      },
+      experience: {
+        title: "Experiencia en la industria",
+        body: "El trabajo continuo con plantas de manufactura nos dio criterio para entender cada operación y proponer el sistema adecuado según sus necesidades y presupuesto.",
+      },
+      support: {
+        title: "Asesoría y soporte",
+        body: "Acompañamos cada proyecto con asesoría especializada, soporte técnico y personal capacitado, buscando siempre un servicio de excelencia.",
+      },
+    },
+    sinceLabel: "Desde",
+    ethosKicker: "Misión, visión y valores",
+    ethosTitle: "Lo que nos guía",
+    imageAlt: "Equipo de Concrete Coatings Solutions en obra",
+    imagePlaceholder: "Fotografía próximamente",
   },
 
   industries: {
@@ -127,6 +197,9 @@ export const es: Dictionary = {
     kicker: "Misión, visión y valores",
     title: "Lo que nos guía",
     learnMore: "Conocer más",
+    exploreMission: "Conocer misión",
+    exploreVision: "Conocer visión",
+    exploreValues: "Conocer valores",
     close: "Cerrar",
     imagePlaceholder: "Fotografía próximamente",
     mission: {

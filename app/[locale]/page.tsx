@@ -5,6 +5,7 @@ import { getDictionary } from "@/lib/dictionaries";
 import { Hero } from "@/components/home/Hero";
 import { Story } from "@/components/home/Story";
 import { Solutions } from "@/components/home/Solutions";
+import { DemandingEnvironments } from "@/components/home/DemandingEnvironments";
 import { Industries } from "@/components/home/Industries";
 import { Work } from "@/components/home/Work";
 import { Applications } from "@/components/home/Applications";
@@ -36,6 +37,8 @@ export default async function LocaleHomePage({
       <Story locale={locale} dict={dict} />
 
       <Solutions locale={locale} dict={dict} />
+
+      <DemandingEnvironments locale={locale} dict={dict} />
 
       <Industries locale={locale} dict={dict} />
 

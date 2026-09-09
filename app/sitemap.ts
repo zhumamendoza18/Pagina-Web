@@ -4,9 +4,9 @@ import { SITE_URL, localePath } from "@/lib/seo";
 
 /**
  * Routes below the locale segment. Add each new page here as it ships
- * (e.g. "soluciones", "industrias", "proyectos", "nosotros", "contacto").
+ * (e.g. "industrias", "proyectos", "contacto").
  */
-const ROUTES = [""] as const;
+const ROUTES = ["", "soluciones", "nosotros"] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();

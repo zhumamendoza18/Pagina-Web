@@ -7,6 +7,149 @@ Stack: Next.js 16.3.4 · App Router · TypeScript (strict) · Tailwind CSS v4 ·
 
 ---
 
+## ACTUALIZACIÓN CURRICULUM EMPRESARIAL 2026 (Fase 15.1)
+
+Actualización aditiva de contenido y datos con la información oficial del
+Curriculum Empresarial 2026. **No** fue un rediseño: misma arquitectura,
+identidad, tipografía, colores, responsive, header, footer, formulario y SEO
+global.
+
+### Qué se hizo
+
+- **Nuestra Historia**: nuevo texto ES/EN (origen como aliado, no solo
+  proveedor; experiencia en industria maquiladora; asesoría y soporte). Título
+  y botón sin cambios. Los datos numéricos de experiencia **no** se añadieron.
+- **Servicios**: `data/solutions.ts` pasa de 6 a **10 familias** (aditivo).
+  Nuevas: Sistemas Resinosos, Sello de Juntas, Señalización Industrial,
+  Morteros de Alta Resistencia. Renombradas: Abrillantado → “Pulido y
+  Abrillantado de Concreto”; Mantenimiento de sistemas existentes →
+  “Mantenimiento y Regeneración de Pisos”. Impermeabilización y Reparación:
+  se **añadieron** subtemas sin borrar los previos. Solo nombres — sin PSI,
+  temperaturas ni especificaciones inventadas.
+- **Home**: nueva banda visual compacta **“Soluciones para ambientes
+  exigentes”** (4 mosaicos: ESD / Alto Tráfico / Resistencia Química /
+  Autonivelante) tras “Nuestras Soluciones”. Imagen + nombre + flecha + hover;
+  sin párrafos. CTA “Ver soluciones técnicas” → `/soluciones`. La sección de
+  “Nuestras Soluciones” de la Home sigue mostrando las mismas 4 familias
+  destacadas.
+- **Rutas nuevas**: `/{es|en}/soluciones` (índice visual de las 10 familias con
+  sus subtemas en chips, `<h1>` único, anclas por familia) y
+  `/{es|en}/nosotros` (origen + experiencia + asesoría/soporte + Misión, Visión
+  y Valores reutilizando `EthosGrid`, `<h1>` único). Altas en `app/sitemap.ts`
+  y `alternatesFor` propio por página.
+- **Navegación**: `getSolutionHref` / `getSolutionSubtopicHref` ahora anclan a
+  `/soluciones#<familia>` (antes apuntaban a `/soluciones/<slug>`, que hoy no
+  existe y daba 404). El Header no cambió (sigue “Soluciones”). *Este es el
+  único cambio de navegación; se hizo para eliminar 404 preexistentes.*
+- **Misión / Visión / Valores**: **sin cambios** — el texto vigente ya coincide
+  exactamente con el del curriculum (5 valores incluidos).
+- **Clientes**: `data/clients.ts` incorpora los 10 nombres del curriculum (BRP,
+  Prologis, Mercury, Alfa Cronos, CommScope, Lexmark, Align, Honeywell, Edumex,
+  Flex) con `logo:""`, `url:""`, `industry:""`, `projectType:""`,
+  `visible:false`. `showClients` sigue en `false`. Sin logos de internet, sin
+  proyectos asociados.
+- **Proveedores / marcas**: `data/brands.ts` incorpora Sika, Torginol, Corvixx
+  Polymers, Neogard y Convergent Concrete Technologies con `logo:""`,
+  `url:""`, `certifiedApplicator:false`, `visible:false`. `showBrands` sigue en
+  `false`. **No** se muestra “Aplicador certificado de…” en ningún caso.
+- **Componentes de Clientes / Marcas**: reutilizados. Ahora filtran por
+  `visible` además del flag, así que aunque el array tenga nombres, no se
+  renderiza nada ni se ocupa espacio.
+- **Carpetas de imágenes** creadas: `public/images/ccs/services/{resinous,
+  joints,marking,maintenance,polished-concrete,concrete-repair,
+  high-strength-mortars,waterproofing}/`, más `clients/` y `brands/` (ya
+  existían). Todo con placeholders; sin fotos de internet.
+- **2008 vs 2009**: se mantiene públicamente **“Desde 2009 / Since 2009”**. Se
+  añadió un `TODO` en `config/site.ts` (`foundedYear`) para confirmar con
+  dirección si 2008 es el origen del proyecto y 2009 el inicio de operaciones.
+  La discrepancia **no** se muestra al visitante.
+
+### Pendiente de confirmación del propietario
+
+- [ ] Confirmar **2008 vs 2009** (origen del proyecto vs inicio de operaciones).
+- [ ] Confirmar **autorización** para mostrar logos de clientes (y con qué wording).
+- [ ] Recibir los **archivos de logos de clientes** (SVG/PNG locales).
+- [ ] Confirmar la **lista de proveedores actuales**.
+- [ ] Recibir los **logos oficiales de proveedores**.
+- [ ] Confirmar **certificaciones vigentes** y con qué marcas (antes de mostrar
+      “Aplicador certificado de…”).
+- [ ] **Fotografías reales por servicio** (una por familia, mínimo).
+- [ ] **Fotografías autorizadas de proyectos** (portada + galería).
+
+Al activar Clientes/Marcas: cargar logos locales, poner `visible: true` en cada
+entrada autorizada y `site.flags.showClients` / `showBrands` en `true`.
+
+---
+
+## FASE 15.2 — SOLUCIONES INTERACTIVAS POR SECCIONES
+
+`/soluciones` deja de ser una lista y pasa a ser una página larga con **una
+sección independiente por familia**. Solo se tocó esa página y sus datos.
+
+### Componente reutilizable
+
+- **`components/solutions/SolutionSection.tsx`** (client) — una familia por
+  instancia. Estado propio: subtema seleccionado + lightbox. Panel izquierdo =
+  portada del álbum + "Ver proceso →"; panel derecho = título de familia +
+  chips de subtemas + copy del subtema seleccionado (¿Qué es? / Beneficios /
+  Ideal para). Cambiar de chip solo afecta a su sección.
+- **`components/ui/Lightbox.tsx`** (client, nuevo) — álbum accesible: portal,
+  focus-trap, `Esc` / `←` / `→`, clic en overlay, contador `n / total`,
+  miniaturas, swipe táctil, imagen grande con `object-contain` (nunca recorta).
+- La página `app/[locale]/soluciones/page.tsx` sigue siendo server component
+  (metadata, hero navy, `<h1>`, botón inferior); solo mapea `allSolutions()` →
+  `<SolutionSection>` con fondos alternos blanco / gris claro.
+
+### Familias migradas (las 10 existentes, sin renombrar ni eliminar)
+
+`abrillantado-de-concreto`, `recubrimientos-para-pisos`, `sistemas-resinosos`,
+`impermeabilizacion`, `recubrimientos-especializados`, `sello-de-juntas`,
+`senalizacion-industrial`, `mantenimiento-de-sistemas-existentes`,
+`reparacion-de-concreto`, `morteros-de-alta-resistencia`. Anclas `#<slug>`
+conservadas (los enlaces de la Home siguen funcionando).
+
+### Subtemas configurados
+
+44 en total, tomados tal cual de `data/solutions.ts` (7 / 6 / 4 / 9 / 3 / 2 / 4
+/ 2 / 3 / 4). Se añadieron a `SolutionSubtopic` los campos **opcionales**
+`summary`, `benefits`, `idealFor`, `coverImage`, `gallery` (+ tipos
+`GalleryImage` / `GalleryStage`) y `SolutionCategory.defaultTopicSlug`. **Ningún
+campo se pobló** — sin contenido inventado.
+
+### Textos que todavía requieren aprobación
+
+- `summary` (¿Qué es?), `benefits` y `idealFor` de **cada uno de los 44
+  subtemas**. Mientras no existan: se muestra "Información detallada en
+  preparación." / "Detailed information in preparation." y no se renderizan
+  Beneficios ni Ideal para. No se hace ninguna afirmación técnica (PSI,
+  temperaturas, %, certificaciones, química) sin fuente.
+
+### Fotografías / álbumes pendientes
+
+- **Todas.** Hoy cada sección muestra el placeholder neutro; "Ver proceso →" y
+  las miniaturas **no aparecen** hasta que haya fotos reales (no se reserva fila
+  vacía, no hay 404).
+- Estructura de carpetas creada (con `.gitkeep`):
+  `public/images/ccs/services/<familia-slug>/<subtema-slug>/` para las 10
+  familias y sus 44 subtemas, más `public/images/ccs/services/README.md` con la
+  convención de `cover` + `gallery` ordenada por `data`.
+- Cómo añadir portada Antes/Después y fotos al álbum: ver ese `README.md`
+  (`coverImage` + array `gallery: [{ src, alt, stage }]`, primer elemento =
+  portada, orden = el del array).
+
+### Otros
+
+- `content/*`: nuevas claves en `solutionsPage` (`viewProcess`, `whatIsIt`,
+  `benefitsLabel`, `idealForLabel`, `summaryPending`, `topicsGroupLabel`,
+  `gallery.*`) en ES y EN.
+- `app/globals.css`: +`@keyframes ccs-fade-in` y `.ccs-fade` (fade de 240 ms al
+  cambiar de subtema; el bloque `prefers-reduced-motion` lo neutraliza).
+- Pendiente de fases previas y aún vigente: reponer `mission.png` / `vision.png`
+  / `values.png` en `public/images/ccs/company/` (sección "Lo que nos guía" de
+  Home y `/nosotros`).
+
+---
+
 ## 1. Resultado de la auditoría (15 puntos)
 
 | # | Área | Estado |
@@ -62,14 +205,14 @@ El acento cian de marca (`#0fa9dc`) sobre fondos **claros** daba un contraste de
 
 ## 3. Qué falta (trabajo pendiente de desarrollo)
 
-- **7 rutas internas** (todas enlazadas desde la Home; hoy 404):
-  - `/{es|en}/soluciones` — índice de soluciones
-  - `/{es|en}/soluciones/{slug}` — 6 páginas de categoría: `abrillantado-de-concreto`, `recubrimientos-para-pisos`, `impermeabilizacion`, `recubrimientos-especializados`, `reparacion-de-concreto`, `mantenimiento-de-sistemas-existentes`
+- **Rutas internas ya construidas** (Fase 15.1, versión básica): `/{es|en}/soluciones`,
+  `/{es|en}/nosotros` — `<h1>` único, `alternatesFor` propio, altas en `ROUTES` del sitemap.
+- **Rutas internas pendientes** (enlazadas desde la Home; hoy 404):
   - `/{es|en}/industrias` — índice de industrias
   - `/{es|en}/industrias/{slug}` — 4 páginas: `industrial`, `comercial`, `residencial`, `aplicaciones-especializadas`
   - `/{es|en}/proyectos` — galería completa de proyectos
-  - `/{es|en}/nosotros` — página “Nosotros”
   - `/{es|en}/contacto` — página de contacto
+  - Opcional: páginas de detalle por familia `/{es|en}/soluciones/{slug}` (hoy el índice muestra los subtemas en línea y ancla por familia).
   - Cada una: **`<h1>` único**, `alternates` propio con `alternatesFor(locale, ruta)`, y alta en `ROUTES` de `app/sitemap.ts`.
 - **Backend del formulario** de cotización (§9).
 - **Secciones Clientes y Marcas**: ya construidas y ocultas; activar con datos reales (§6–§7).

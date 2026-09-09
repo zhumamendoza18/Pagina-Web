@@ -1,6 +1,6 @@
 import type { Dictionary } from "@/content/types";
 import { site } from "@/config/site";
-import { clients, clientLogoSrc } from "@/data/clients";
+import { visibleClients, clientLogoSrc } from "@/data/clients";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { LogoCarousel } from "@/components/company/LogoCarousel";
@@ -15,9 +15,10 @@ interface ClientsProps {
  * real client data. No fictitious names or logos.
  */
 export function Clients({ dict }: ClientsProps) {
-  if (!site.flags.showClients || clients.length === 0) return null;
+  const roster = visibleClients();
+  if (!site.flags.showClients || roster.length === 0) return null;
 
-  const items = clients.map((client) => ({
+  const items = roster.map((client) => ({
     name: client.name,
     src: clientLogoSrc(client.logo),
     url: client.url,

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Media } from "@/components/ui/Media";
 
 export interface CarouselItem {
+  /** Stable, language-independent unique id (used as the React key). */
+  id: string;
   href: string;
   name: string;
   imageSrc: string;
@@ -94,7 +96,7 @@ export function ApplicationsCarousel({ items, labels }: ApplicationsCarouselProp
       >
         {items.map((item) => (
           <li
-            key={item.href}
+            key={item.id}
             className="shrink-0 basis-[80%] snap-start sm:basis-[46%] lg:basis-[31%] xl:basis-[24%]"
           >
             <Link

@@ -13,10 +13,11 @@ interface HeroProps {
 }
 
 /**
- * Full-bleed opening screen. A large horizontal photo of a finished industrial
- * concrete floor (placeholder until provided), a dark elegant overlay for
- * legibility, a short two-line headline and the two primary CTAs. Text is
- * kept minimal on purpose.
+ * Opening screen. Two panes that share one navy field: the industrial image
+ * with the CCS logo on the left, the headline and CTAs on the right. On
+ * narrow screens they stack (image, then content). A soft gradient melts the
+ * image edge into the navy so it never reads as a pasted rectangle. Text and
+ * buttons are unchanged.
  */
 export function Hero({ locale, dict }: HeroProps) {
   const { hero } = dict;
@@ -24,79 +25,80 @@ export function Hero({ locale, dict }: HeroProps) {
   return (
     <section
       aria-label={hero.titleLines.join(" ")}
-      className="relative isolate flex min-h-[85svh] items-end overflow-hidden bg-ccs-navy lg:min-h-[90svh]"
+      className="relative isolate overflow-hidden bg-ccs-navy"
     >
-      {/* Photo / placeholder */}
-      <Media
-        src={heroImageSrc()}
-        alt={hero.imageAlt}
-        placeholderLabel={hero.imagePlaceholder}
-        placeholderTone="dark"
-        position={heroConfig.imagePosition}
-        priority
-        sizes="100vw"
-        fill
-      />
-
-      {/* Elegant dark overlay */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-ccs-charcoal/40"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-ccs-navy/90 via-ccs-navy/45 to-ccs-navy/10"
-      />
-
-      {/* Content */}
-      <Container className="relative z-10 pb-16 pt-36 sm:pb-24 sm:pt-44 lg:pb-28">
-        <div className="max-w-3xl">
-          <p className="text-xs font-medium uppercase tracking-[0.28em] text-white/70 sm:text-sm">
-            {hero.tagline}
-          </p>
-
-          <h1 className="mt-5 text-[1.9rem] font-extrabold leading-[1.08] text-white [text-wrap:balance] sm:text-5xl sm:leading-[1.05] lg:text-7xl">
-            <span className="block">{hero.titleLines[0]}</span>
-            <span className="block">{hero.titleLines[1]}</span>
-          </h1>
-
-          <p className="mt-7 text-xs font-semibold uppercase tracking-[0.22em] text-ccs-cyan sm:text-sm sm:tracking-[0.26em]">
-            {hero.sinceLabel} {site.foundedYear}
-          </p>
-
-          <ul className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-white/80 sm:text-base">
-            {hero.markets.map((market, index) => (
-              <li key={market} className="flex items-center gap-3">
-                {index > 0 && (
-                  <span aria-hidden="true" className="text-white/40">
-                    &middot;
-                  </span>
-                )}
-                {market}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
-            <Button
-              href={getProjectsHref(locale)}
-              variant="on-dark"
-              size="lg"
-              className="w-full sm:w-auto"
-            >
-              {dict.actions.viewProjects}
-            </Button>
-            <Button
-              href={getQuoteHref(locale)}
-              variant="primary"
-              size="lg"
-              className="w-full sm:w-auto"
-            >
-              {dict.actions.requestQuote}
-            </Button>
-          </div>
+      <div className="grid min-h-[85svh] grid-rows-[38vh_1fr] sm:grid-rows-[42vh_1fr] lg:min-h-[90svh] lg:grid-cols-[52fr_48fr] lg:grid-rows-1">
+        {/* Left / top — industrial image with the CCS logo */}
+        <div className="relative overflow-hidden">
+          <Media
+            src={heroImageSrc()}
+            alt=""
+            placeholderLabel={hero.imagePlaceholder}
+            placeholderTone="dark"
+            position={heroConfig.imagePosition}
+            priority
+            sizes="(min-width: 1024px) 52vw, 100vw"
+            fill
+          />
+          {/* Blend into the navy pane: downwards when stacked, rightwards on desktop */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-b from-transparent via-ccs-navy/15 to-ccs-navy lg:bg-gradient-to-r lg:from-transparent lg:via-ccs-navy/25 lg:to-ccs-navy"
+          />
         </div>
-      </Container>
+
+        {/* Right / bottom — content (text and buttons unchanged) */}
+        <div className="relative z-10 flex items-center">
+          <Container className="py-12 sm:py-16 lg:py-20">
+            <div className="max-w-3xl">
+              <p className="text-xs font-medium uppercase tracking-[0.28em] text-white/70 sm:text-sm">
+                {hero.tagline}
+              </p>
+
+              <h1 className="mt-5 text-[1.9rem] font-extrabold leading-[1.08] text-white [text-wrap:balance] sm:text-5xl sm:leading-[1.05] lg:text-7xl">
+                <span className="block">{hero.titleLines[0]}</span>
+                <span className="block">{hero.titleLines[1]}</span>
+              </h1>
+
+              <p className="mt-7 text-xs font-semibold uppercase tracking-[0.22em] text-ccs-cyan sm:text-sm sm:tracking-[0.26em]">
+                {hero.sinceLabel} {site.foundedYear}
+              </p>
+
+              <ul className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-white/80 sm:text-base">
+                {hero.markets.map((market, index) => (
+                  <li key={market} className="flex items-center gap-3">
+                    {index > 0 && (
+                      <span aria-hidden="true" className="text-white/40">
+                        &middot;
+                      </span>
+                    )}
+                    {market}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
+                <Button
+                  href={getProjectsHref(locale)}
+                  variant="on-dark"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
+                  {dict.actions.viewProjects}
+                </Button>
+                <Button
+                  href={getQuoteHref(locale)}
+                  variant="primary"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
+                  {dict.actions.requestQuote}
+                </Button>
+              </div>
+            </div>
+          </Container>
+        </div>
+      </div>
 
       {/* Scroll cue */}
       <div

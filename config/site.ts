@@ -23,7 +23,15 @@ export interface SiteConfig {
     es: string;
     en: string;
   };
-  /** Year the company started operating. Shown as "Desde 2009" / "Since 2009". */
+  /**
+   * Year the company started operating. Shown as "Desde 2009" / "Since 2009".
+   *
+   * TODO: Confirmar con dirección si 2008 corresponde al origen del proyecto
+   * y 2009 al inicio oficial de operaciones. El Curriculum Empresarial 2026
+   * menciona "En verano de 2008 se materializa CCS-México"; hasta que se
+   * aclare, públicamente se mantiene 2009 (no mostrar la discrepancia al
+   * visitante).
+   */
   foundedYear: number;
 
   /**
@@ -55,6 +63,14 @@ export interface SiteConfig {
     showBrands: boolean;
     /** Show the projects gallery (structure is ready even while empty). */
     showProjects: boolean;
+    /**
+     * Show the "Recubrimientos especializados" / "Specialized Coatings" family
+     * everywhere it would surface (the /soluciones section, the Home solutions
+     * grid and the Home "specialized applications" carousel). The family, its
+     * subtopics, dictionary strings and image folders stay in the codebase
+     * while this is false — flip to `true` to bring it back, nothing to rebuild.
+     */
+    showSpecializedCoatings: boolean;
   };
 }
 
@@ -87,5 +103,6 @@ export const site: SiteConfig = {
     showClients: false,
     showBrands: false,
     showProjects: true,
+    showSpecializedCoatings: false,
   },
 };

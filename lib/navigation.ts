@@ -72,18 +72,23 @@ export function getSolutionsHref(locale: Locale): string {
   return `/${locale}/soluciones`;
 }
 
-/** A single solution category page. */
+/**
+ * A solution family. Per-category detail routes are not built yet, so this
+ * anchors to the family block on the single /soluciones index page.
+ */
 export function getSolutionHref(locale: Locale, slug: string): string {
-  return `/${locale}/soluciones/${slug}`;
+  return `/${locale}/soluciones#${slug}`;
 }
 
-/** A subtopic anchored within its category page. */
+/**
+ * A subtopic. Detail routes are not built yet, so this anchors to the parent
+ * family block on the /soluciones index page.
+ */
 export function getSolutionSubtopicHref(
   locale: Locale,
   categorySlug: string,
-  subtopicSlug: string,
 ): string {
-  return `/${locale}/soluciones/${categorySlug}#${subtopicSlug}`;
+  return `/${locale}/soluciones#${categorySlug}`;
 }
 
 /** Industries index page. */

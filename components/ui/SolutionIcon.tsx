@@ -6,7 +6,11 @@ export type SolutionIconName =
   | "waterproofing"
   | "specialized"
   | "repair"
-  | "maintenance";
+  | "maintenance"
+  | "resinous"
+  | "jointSealing"
+  | "marking"
+  | "mortars";
 
 const paths: Record<SolutionIconName, ReactNode> = {
   // shine / gloss
@@ -43,6 +47,36 @@ const paths: Record<SolutionIconName, ReactNode> = {
     <>
       <circle cx="12" cy="12" r="3" />
       <path d="M12 3v2.5M12 18.5V21M4.2 7l2.1 1.2M17.7 15.8 19.8 17M4.2 17l2.1-1.2M17.7 8.2 19.8 7" />
+    </>
+  ),
+  // poured / self-levelling resin
+  resinous: (
+    <>
+      <path d="M4 15c2-1 4-1 6 0s4 1 6 0 2-1 4-1" />
+      <path d="M6 15V9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6" />
+      <path d="M9 7V5M15 7V5" />
+    </>
+  ),
+  // sealed joint between two slabs
+  jointSealing: (
+    <>
+      <path d="M4 8h6v9H4zM14 8h6v9h-6z" />
+      <path d="M12 5v14" />
+    </>
+  ),
+  // floor marking lines + arrow
+  marking: (
+    <>
+      <path d="M4 20 20 4" />
+      <path d="M4 14 10 8M10 20 16 14" />
+      <path d="M15 4h5v5" />
+    </>
+  ),
+  // trowel / mortar
+  mortars: (
+    <>
+      <path d="M3 6h11l-5.5 7L3 6z" />
+      <path d="M9.5 13 14 20l3-2-3.5-5" />
     </>
   ),
 };
